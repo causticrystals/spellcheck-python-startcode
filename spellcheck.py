@@ -4,7 +4,7 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
-
+import time # To measure how long the functions take
 
 def main():
     # Load data files into lists
@@ -16,7 +16,7 @@ def main():
     print(aliceWords[0:50])
 
     #main menu options
-    print("Main Menu")
+    print("\nMain Menu")
     print("1: Spell Check a Word(Linear Search)")
     print("2: Spell Check a Word(Binary Search)")
     print("3: Spell Check Alice in Wonderland (Linear Search)")
@@ -27,13 +27,13 @@ def main():
 
     #action based on input
     if selection == "1":
-        spellCheckLinear()
+        spellCheckLinear(dictionary)
     elif selection == "2":
-        spellCheckBinary()
+        spellCheckBinary(dictionary)
     elif selection == "3":
-        aliceWonderLinear()
+        aliceWonderLinear(aliceWords, dictionary)
     elif selection == "4":
-        aliceWonderBinary()
+        aliceWonderBinary(aliceWords, dictionary)
     elif selection == "5":
         print("Bye for now :-)")
 
@@ -73,8 +73,26 @@ def binarySearch(anArray, item):
     #if item not found
     return -1
 
-def spellCheckLinear():
-    wordEnter = lower(input(Please enter a word: ))
+def spellCheckLinear(array): #add timing stuff
+    wordEnter = input("Please enter a word: ").lower()
+    print("\nLinear Search starting...")
+    #search for item
+    searchItem = linearSearch(array, wordEnter)
+    if searchItem >= 0:
+        print(f'{wordEnter} is in the dictionary at position {searchItem}. () seconds')
+    else:
+        print(f'{wordEnter} is NOT IN the dictionary')
+
+def spellCheckBinary(array):
+    wordEnter = input("Please enter a word: ").lower()
+    print("\nBinary Search starting...")
+    #search for item
+    searchItem = binarySearch(array, wordEnter)
+    if searchItem >= 0:
+        print(f'{wordEnter} is in the dictionary at position {searchItem}. () seconds')
+    else:
+        print(f'{wordEnter} is NOT IN the dictionary.')
+
 
 # Call main() to begin program
 main()
