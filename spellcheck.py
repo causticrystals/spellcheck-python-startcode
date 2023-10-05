@@ -83,7 +83,7 @@ def spellCheckLinear(array): #add timing stuff
     else:
         print(f'{wordEnter} is NOT IN the dictionary')
 
-def spellCheckBinary(array):
+def spellCheckBinary(array): #add timing
     wordEnter = input("Please enter a word: ").lower()
     print("\nBinary Search starting...")
     #search for item
