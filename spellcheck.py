@@ -4,7 +4,8 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
-import time # To measure how long the functions take
+import math
+import time
 
 def main():
     # Load data files into lists
@@ -61,19 +62,18 @@ def linearSearch(anArray, item):
 def binarySearch(anArray, item):
     li = 0
     ui = len(anArray) - 1
-
     while li <= ui:
         mi = math.floor((li + ui) / 2)
         if item == anArray[mi]:
             return mi
         elif item < anArray[mi]:
             ui = mi - 1
-        else:
+        elif item > anArray:
             li = mi + 1
     #if item not found
     return -1
 
-def spellCheckLinear(array): #add timing stuff
+def spellCheckLinear(array):
     wordEnter = input("Please enter a word: ").lower()
     print("\nLinear Search starting...")
     #search for item
@@ -83,7 +83,7 @@ def spellCheckLinear(array): #add timing stuff
     else:
         print(f'{wordEnter} is NOT IN the dictionary')
 
-def spellCheckBinary(array): #add timing
+def spellCheckBinary(array):
     wordEnter = input("Please enter a word: ").lower()
     print("\nBinary Search starting...")
     #search for item
@@ -92,7 +92,6 @@ def spellCheckBinary(array): #add timing
         print(f'{wordEnter} is in the dictionary at position {searchItem}. () seconds')
     else:
         print(f'{wordEnter} is NOT IN the dictionary.')
-
 
 # Call main() to begin program
 main()
